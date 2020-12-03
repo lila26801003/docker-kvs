@@ -16,23 +16,23 @@ APIURL = WEBURL + 'api/v1'
 ### GET BUTTON ###
 ##################
 
-def test_get_success_nokey():
-  clean_and_add_keys()
-  try:
-    (driver, elems) = get_driver_elements()
-    elems['get-button'].click()
-    time.sleep(1)
-    test_name = sys._getframe().f_code.co_name
-    take_screenshot(driver, test_name)
-    assert elems['request-url'].text   == '/api/v1/keys/'
-    assert elems['request-body'].text  == ''
-    assert elems['response-code'].text == '200'
-    rbody = json.loads(elems['response-body'].text)
-    assert rbody == {'apple':'red', 'banana':'yellow'}
-    driver.quit()
-  except:
-    driver.quit()
-    raise
+#def test_get_success_nokey():
+#  clean_and_add_keys()
+#  try:
+#    (driver, elems) = get_driver_elements()
+#    elems['get-button'].click()
+#    time.sleep(1)
+#    test_name = sys._getframe().f_code.co_name
+#    take_screenshot(driver, test_name)
+#    assert elems['request-url'].text   == '/api/v1/keys/'
+#    assert elems['request-body'].text  == ''
+#    assert elems['response-code'].text == '200'
+#    rbody = json.loads(elems['response-body'].text)
+#    assert rbody == {'apple':'red', 'banana':'yellow'}
+#    driver.quit()
+#  except:
+#    driver.quit()
+#    raise
   
 def test_get_success_keyexist():
   clean_and_add_keys()
@@ -75,24 +75,24 @@ def test_get_fail_keynotexist():
 ### POST BUTTON ###
 ###################
 
-def test_post_success():
-  clean_and_add_keys()
-  try:
-    (driver, elems) = get_driver_elements()
-    elems['key'].send_keys('grape')
-    elems['value'].send_keys('purple')
-    elems['post-button'].click()
-    time.sleep(1)
-    take_screenshot(driver, sys._getframe().f_code.co_name)
-    assert elems['request-url'].text   == '/api/v1/keys/grape'
-    assert elems['request-body'].text  == 'purple'
-    assert elems['response-code'].text == '200'
-    rbody = json.loads(elems['response-body'].text)
-    assert rbody == {'grape':'purple'}
-    driver.quit()
-  except:
-    driver.quit()
-    raise
+#def test_post_success():
+#  clean_and_add_keys()
+#  try:
+#    (driver, elems) = get_driver_elements()
+#    elems['key'].send_keys('grape')
+#    elems['value'].send_keys('purple')
+#    elems['post-button'].click()
+#    time.sleep(1)
+#    take_screenshot(driver, sys._getframe().f_code.co_name)
+#    assert elems['request-url'].text   == '/api/v1/keys/grape'
+#    assert elems['request-body'].text  == 'purple'
+#    assert elems['response-code'].text == '200'
+#    rbody = json.loads(elems['response-body'].text)
+#    assert rbody == {'grape':'purple'}
+#    driver.quit()
+#  except:
+#    driver.quit()
+#    raise
 
 def test_post_fail_nokey():
   clean_and_add_keys()
